@@ -15,6 +15,11 @@ const TableBody = props => {
             <tr key={index}>
                 <td>{row.name}</td>
                 <td>{row.job}</td>
+                <td>
+                    <button onClick={() => props.removeCharacter(index)}>
+                        Delete
+                    </button>
+                </td>
             </tr>
         )
     })
@@ -22,14 +27,15 @@ const TableBody = props => {
 }
 
 class Table extends Component {
+
     render() {
-        console.log('this.props', this.props);
+        console.log('this.props1', this.props);
+        const { characterData, removeCharacter } = this.props;
         // 变量的解构赋值
-        const {characterData} = this.props;
         return (
             <table>
                 <TableHeader/>
-                <TableBody characterData={characterData}/>
+                <TableBody characterData={characterData}  removeCharacter={removeCharacter} />
             </table>
         )
     }
